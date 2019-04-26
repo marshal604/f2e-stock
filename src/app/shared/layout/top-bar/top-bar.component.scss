@@ -1,0 +1,127 @@
+@import 'variable';
+
+// init layout
+.mat-toolbar {
+  position: fixed;
+  height: map-get($layout, top-bar-height);
+  width: 100%;
+  top: 0;
+  padding: 0 $p-12;
+  box-sizing: border-box;
+  z-index: map-get($z-index, top-bar);
+
+  &.mat-toolbar-row {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.me {
+  height: calc(#{map-get($layout, top-bar-height)} - 8px);
+  min-width: calc(#{map-get($layout, top-bar-height)} - 8px);
+  position: relative;
+
+  .front,
+  .back {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all 1s;
+    cursor: pointer;
+  }
+
+  .front {
+    transform: rotateY(0deg);
+
+    img {
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+    }
+  }
+
+  .back {
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    border-radius: 50%;
+    color: $light;
+    text-shadow: 0px 0px 20px map-get($colors, 'red');
+    font-size: 20px;
+
+    &:before {
+      position: absolute;
+      content: attr(data-greeting);
+      filter: blur(10px);
+      z-index: -1;
+    }
+  }
+
+  &:hover {
+    .front {
+      transform: rotateY(180deg);
+    }
+
+    .back {
+      transform: rotateY(0deg);
+    }
+  }
+}
+
+.nav {
+  flex: 1;
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    li {
+      margin: 0 $m-16;
+      color: $light;
+      padding: $p-8 $p-16;
+      transition: border 0.5s;
+      cursor: pointer;
+      border: 1px solid transparent;
+
+      &:hover {
+        border: 1px solid;
+      }
+    }
+  }
+}
+
+.right {
+  ul {
+    display: flex;
+    align-items: center;
+
+    li {
+      position: relative;
+      margin: 0 $m-8;
+      color: $light;
+
+      .mat-icon {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.theme-btn {
+  margin: 8px;
+  user-select: none;
+
+  &.green {
+    background: map-get($colors, 'green');
+  }
+
+  &.blue {
+    background: map-get($colors, 'blue');
+  }
+}

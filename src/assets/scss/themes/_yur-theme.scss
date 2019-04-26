@@ -1,0 +1,5 @@
+@import 'themes/dialog';
+
+@mixin yur-theme($theme) {
+  @include yur-dialog-theme($theme);
+}

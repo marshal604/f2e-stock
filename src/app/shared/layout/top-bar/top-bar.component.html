@@ -1,0 +1,38 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <div class="me">
+      <div class="front">
+        <img src="assets/images/users/profile.jpg" alt="it's my draw picture">
+      </div>
+      <yur-say-hi class="back"></yur-say-hi>
+      <!-- <div class="back" [attr.data-greeting]="'Hi'">Hi</div> -->
+    </div>
+    <div class="nav">
+      <ul>
+        <li>Dashboard</li>
+        <li>Strategy List</li>
+      </ul>
+    </div>
+    <div class="right">
+      <ul>
+        <!-- <li>
+          <button mat-mini-fab (click)="showFeatureDialog()">
+            <mat-icon>apps</mat-icon>
+          </button>
+          <yur-dialog *ngIf="showFeature" (hidden)="hideFeatureDialog()">
+            <yur-say-hi></yur-say-hi>
+          </yur-dialog>
+        </li> -->
+        <li>
+          <button mat-mini-fab class="theme-picker" (click)="showThemeDialog()">
+            <mat-icon>color_lens</mat-icon>
+          </button>
+          <yur-dialog *ngIf="showTheme" (hidden)="hideThemeDialog()">
+            <button class="mat-mini-fab theme-btn {{getThemeColor(theme)}}" *ngFor="let theme of themeArr"
+              (click)="changeTheme(theme)"></button>
+          </yur-dialog>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

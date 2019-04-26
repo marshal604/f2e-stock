@@ -1,0 +1,12 @@
+@mixin yur-dialog-theme($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  yur-dialog {
+    .content,
+    .arrow {
+      background: mat-color($background, dialog);
+      color: mat-color($foreground, text);
+    }
+  }
+}

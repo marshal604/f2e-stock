@@ -1,0 +1,31 @@
+@import 'variable';
+
+// init layout
+.dialog {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 12px);
+
+  .content,
+  .arrow {
+    position: absolute;
+    z-index: map-get($z-index, modal);
+  }
+
+  .content {
+    min-width: 200px;
+    min-height: 250px;
+    border-radius: 4px;
+    box-shadow: 0 0 1px rgba(black, 0.5);
+    padding: 12px;
+    box-sizing: border-box;
+  }
+
+  .arrow {
+    width: 12px;
+    height: 12px;
+    box-shadow: -1px -1px 0 rgba(black, 0.1);
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+}

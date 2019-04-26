@@ -1,0 +1,15 @@
+.chart-container {
+  width: 100%;
+  height: 100%;
+
+  .chart {
+    width: 100%;
+    height: 100%;
+
+    &.hideXAxis {
+      g[name='x-axis'] {
+        display: none;
+      }
+    }
+  }
+}

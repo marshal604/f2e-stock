@@ -1,0 +1,5 @@
+@import 'variable';
+
+.app-content {
+  padding-top: map-get($layout, top-bar-height);
+}

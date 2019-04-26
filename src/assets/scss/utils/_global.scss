@@ -1,0 +1,16 @@
+// reset ul li
+ul {
+  margin: 0;
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+// for d3 tick
+g[name='hide-x-axis-tick'] {
+  .tick {
+    display: none;
+  }
+}

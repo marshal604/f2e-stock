@@ -1,0 +1,163 @@
+@import "variable";
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  pointer-events: none;
+
+  &.sayHi {
+    z-index: map-get($z-index, modal);
+  }
+}
+
+// say hi layout init
+.person {
+  position: relative;
+  height: 500px;
+  width: 500px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  .head {
+    position: relative;
+    width: 60%;
+    height: 60%;
+    top: 70%;
+
+    // face
+    &:before {
+      content: "";
+      background: #dbc4b1;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 40% 60% 100% 60% / 40% 60% 100% 60%;
+      transform: rotate(45deg);
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+    }
+
+    .eyes {
+      height: 20%;
+      width: 20%;
+      background: #fff;
+      border-radius: 0% 0% 100% 100%;
+      position: absolute;
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+
+      // brow
+      &:before {
+        content: "";
+        position: absolute;
+        top: -70%;
+        background: #000;
+        width: 100%;
+        height: 20%;
+        border-radius: 40%;
+        border: 1px solid black;
+      }
+
+      // eyes ball
+      &:after {
+        content: "";
+        position: absolute;
+        width: 20%;
+        height: 20%;
+        border-radius: 50%;
+        background: #000;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &.left-eye {
+        top: 35%;
+        left: 20%;
+        transform: rotate(10deg);
+      }
+
+      &.right-eye {
+        top: 35%;
+        left: 60%;
+        transform: rotate(-10deg);
+      }
+    }
+
+    .mouse {
+      position: absolute;
+      width: 30%;
+      height: 15%;
+      left: 50%;
+      top: 80%;
+      transform: translate(-50%, -50%);
+      background: map-get($colors, "red");
+      border-radius: 0% 0% 100% 100%;
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .body {
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    bottom: -60%;
+
+    .hand {
+      position: absolute;
+      right: 5%;
+      bottom: -10%;
+      width: 20%;
+      height: 60%;
+      background: #dbc4b1;
+      border-radius: 10% 90% 50% 50% / 5% 50% 50% 50%;
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      transform-origin: bottom center;
+
+      &:before {
+        content: "";
+        top: 40%;
+        width: 100%;
+        height: 60%;
+        background: map-get($colors, "blue");
+        position: absolute;
+      }
+    }
+  }
+}
+
+// say hi animation
+.sayHi {
+  .person {
+    .head {
+      transition: 1s;
+      top: 5%;
+    }
+
+    .body {
+      bottom: 0;
+      transition: 1s 0.2s;
+    }
+
+    .hand {
+      animation: wave-hand 0.3s linear 1s 4 alternate both;
+    }
+  }
+}
+
+@keyframes wave-hand {
+  0% {
+    transform: rotate(15deg);
+  }
+
+  100% {
+    transform: rotate(60deg);
+  }
+}
