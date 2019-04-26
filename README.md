@@ -1,27 +1,14 @@
-# YurLife
+# F2E-Stock
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
+## 初始架構圖
+![f2e-structure](https://www.plantuml.com/plantuml/png/0/ZLR1Rk8m4Btp5QFkeQSSLbLxG5LL2kggsbRTXVPGLQWoyG0HnaQsGyMk-kyxjXFYX0IMGx37RvxVJCQUt1hBjCtNecTMcTmmpTQGIOjwpbA4lps06KjN2wrooOTAA0rZPNPtMdrAjwOqHntiIZEvmDvNBs9ArNgZ94hhcUwLj9Fi3yBt2vhTrNclhmSRbYxnvWR6oDrwnHsjVRk_lxgwlAolmqmGsI4dB9HmL0DDUeEbylT69wbOkF0_qYyLHpXxUnt3vELv-FFCIG-skIOuIkvD0AHfnHPa7ogDyAHuBl0CcA6mDOPf04PGWtgRfMWyhfn02OCeO-zieuHGau2PEdpDKhXyzQhdVfT1RfSaAEU584Rpkg1e7w4McVJyVjJ6Ds9cELDCypXANXg33Lgezv1fpQ6Pb0UvHMELDY-QSOoso5eMsfErHoRMGQSHwXWkiMmcGdBhUxqu-_zHf4iwGIqKGsVVKtprwlzLyMZacMr6dZQjxM47s8cOOr0KSBJ5aMXhpbMeaVEnE1jrD24QYujTN4Qci7NMPmcOnkXc5f-tg8CQElssf6_DcI9e6Oy39o8p8IXL8taaSrTA3pWuMfQ95fQHNpXT1azqjIp7k4MPur7vQmTCT41MsjUH_p7bTVT8TanmL7JpdTBhHnw_qCXmSFy9jbEvxGZDgaqoOzhBeJ4DkxALabYMITGTJ7GAqrMIbZUFdmwhc-UGpzLm1nV9Y0gVPd71LocXnWTmNdGArpHTe_2CvvqDe80LDtg9hKT2QnXI4ePj86OCMXDwX1yMe48JqDLBvvuPsd-JpqIMLi9gFBjSV-IqpKScvyhJkTa3JVQ4xZyygou72Kzk6i7quOTcc-NlHyB65G79-pBZ7EMKqpS4kTNF_obqrSbE8IjvNgtlRUr21xyU-Z0SluxWrHJvhKE2MvcAFepkclZmQi09zFdlmm9jA3kVUr1pkZBPfo2GqoSKu_IfSKjxqBVNFm00 "f2e-structure")
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## 期許
+### Dashboard
+- 每日三大法人買賣超
+- 每日信用交易數量
+### Strategy
+- 成交量飆高的股票
+- 月營收成長良好的股票
+### Auth
+- 權限 / 登入
