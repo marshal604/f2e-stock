@@ -13,9 +13,10 @@
       "@shared/*": ["./src/app/shared/*"],
       "@stock/*": ["./src/app/strategy/stock/*"],
       "@core/*": ["./src/app/core/*"],
-      "@dashboard/*": ["./src/app/dashboard"],
-      "@auth/*": ["./src/app/auth"],
-      "@strategy/*": ["./src/app/strategy"]
+      "@dashboard/*": ["./src/app/dashboard/*"],
+      "@auth/*": ["./src/app/auth/*"],
+      "@strategy/*": ["./src/app/strategy/*"],
+      "@gql-models/*": ["./src/gql-models/*"]
     },
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2017", "dom", "esnext.asynciterable"]

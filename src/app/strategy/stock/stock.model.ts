@@ -2,7 +2,7 @@ export {
   EverydayStockInfoItem,
   EverydayStockInfo,
   EverydayStockInfoItemInput
-} from '@models/stock-info/stock-info.model';
+} from '@gql-models/stock-info/stock-info.model';
 
 export interface StockList {
   title: string;
