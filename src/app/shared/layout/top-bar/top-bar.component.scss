@@ -23,6 +23,17 @@
   min-width: calc(#{map-get($layout, top-bar-height)} - 8px);
   position: relative;
 
+  &.stopSayHiRotate {
+    .front {
+      transform: rotateY(180deg);
+    }
+
+    .back {
+      z-index: 1;
+      transform: rotateY(0deg);
+    }
+  }
+
   .front,
   .back {
     height: 100%;
@@ -35,6 +46,7 @@
 
   .front {
     transform: rotateY(0deg);
+    z-index: 1;
 
     img {
       height: 100%;
@@ -53,13 +65,7 @@
     color: $light;
     text-shadow: 0px 0px 20px map-get($colors, 'red');
     font-size: 20px;
-
-    &:before {
-      position: absolute;
-      content: attr(data-greeting);
-      filter: blur(10px);
-      z-index: -1;
-    }
+    z-index: 0;
   }
 
   &:hover {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, NgZone } from '@angular/core';
 
 @Component({
   selector: 'yur-top-bar',
@@ -11,7 +11,8 @@ export class TopBarComponent implements OnInit {
   showTheme: boolean;
   showFeature: boolean;
   themeArr: string[];
-  constructor() {}
+  stopSayHiRotate: boolean;
+  constructor(private zone: NgZone) {}
 
   ngOnInit() {
     this.initThemeArr();
@@ -43,5 +44,14 @@ export class TopBarComponent implements OnInit {
 
   hideThemeDialog() {
     this.showTheme = false;
+  }
+
+  onAfterClickSayHi() {
+    this.stopSayHiRotate = true;
+    this.zone.runOutsideAngular(() => {
+      setTimeout(() => {
+        this.zone.run(() => (this.stopSayHiRotate = false));
+      }, 2_500);
+    });
   }
 }
