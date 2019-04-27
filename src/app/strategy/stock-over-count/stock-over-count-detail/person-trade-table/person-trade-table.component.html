@@ -1,0 +1,9 @@
+<mat-table [dataSource]="personTradeDataSource" *ngIf="dataSource">
+  <ng-container [matColumnDef]="header" *ngFor="let header of personTradeHeader">
+    <mat-header-cell *matHeaderCellDef>{{ mappingPersonTradeHeader(header) }}</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element[header] }} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="personTradeHeader"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: personTradeHeader"></mat-row>
+</mat-table>

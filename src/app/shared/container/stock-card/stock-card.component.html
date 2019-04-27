@@ -1,0 +1,17 @@
+<mat-card
+  [style.width.%]="widthRatio"
+  [style.margin]="margin"
+  [style.display]="widthRatio ? 'inline-block' : 'block'"
+>
+  <mat-card-title>
+    <h4 class="name">
+      {{ stockTitle.name }}
+    </h4>
+    <p class="code">
+      {{ stockTitle.code }}
+    </p>
+  </mat-card-title>
+  <mat-card-content>
+    <ng-content></ng-content>
+  </mat-card-content>
+</mat-card>

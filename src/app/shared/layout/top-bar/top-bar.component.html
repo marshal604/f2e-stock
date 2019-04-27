@@ -1,16 +1,16 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <div class="me">
+    <div class="me" [class.stopSayHiRotate]="stopSayHiRotate">
       <div class="front">
-        <img src="assets/images/users/profile.jpg" alt="it's my draw picture">
+        <img src="assets/images/users/profile.jpg" alt="it's my draw picture" />
       </div>
-      <yur-say-hi class="back"></yur-say-hi>
+      <yur-say-hi class="back" (afterClick)="onAfterClickSayHi()"> </yur-say-hi>
       <!-- <div class="back" [attr.data-greeting]="'Hi'">Hi</div> -->
     </div>
     <div class="nav">
       <ul>
-        <li>Dashboard</li>
-        <li>Strategy List</li>
+        <li [routerLink]="['dashboard']">Dashboard</li>
+        <li [routerLink]="['strategy']">Strategy List</li>
       </ul>
     </div>
     <div class="right">
@@ -28,8 +28,11 @@
             <mat-icon>color_lens</mat-icon>
           </button>
           <yur-dialog *ngIf="showTheme" (hidden)="hideThemeDialog()">
-            <button class="mat-mini-fab theme-btn {{getThemeColor(theme)}}" *ngFor="let theme of themeArr"
-              (click)="changeTheme(theme)"></button>
+            <button
+              class="mat-mini-fab theme-btn {{ getThemeColor(theme) }}"
+              *ngFor="let theme of themeArr"
+              (click)="changeTheme(theme)"
+            ></button>
           </yur-dialog>
         </li>
       </ul>

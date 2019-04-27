@@ -11,7 +11,11 @@
     "target": "es5",
     "paths": {
       "@shared/*": ["./src/app/shared/*"],
-      "@stock/*": ["./src/app/strategy/stock/*"],
+      "@shared-layout/*": ["./src/app/shared/layout/*"],
+      "@shared-chart/*": ["./src/app/shared/chart/*"],
+      "@shared-animation/*": ["./src/app/shared/animation/*"],
+      "@shared-container/*": ["./src/app/shared/container/*"],
+      "@stock-over-count/*": ["./src/app/strategy/stock-over-count/*"],
       "@core/*": ["./src/app/core/*"],
       "@dashboard/*": ["./src/app/dashboard/*"],
       "@auth/*": ["./src/app/auth/*"],

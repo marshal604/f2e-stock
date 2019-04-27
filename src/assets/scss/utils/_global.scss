@@ -1,4 +1,4 @@
-// reset ul li
+// reset css
 ul {
   margin: 0;
   padding: 0;
@@ -6,6 +6,10 @@ ul {
   li {
     list-style: none;
   }
+}
+
+* {
+  outline: none;
 }
 
 // for d3 tick

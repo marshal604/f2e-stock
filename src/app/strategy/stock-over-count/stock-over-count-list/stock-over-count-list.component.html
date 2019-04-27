@@ -1,0 +1,20 @@
+<div class="grid">
+  <yur-stock-card
+    [routerLink]="['../', item.code, { title: item.name }]"
+    *ngFor="let item of stockOverCountList"
+    [stockTitle]="{ name: item.name, code: item.code }"
+  >
+    <div class="content">
+      <div class="left">
+        <h4>收盤價: {{ item.info.closePrice }}</h4>
+        <h4>成交量: {{ item.info.tradeCount }}</h4>
+        <h4>成交增長: {{ item.info.tradePercent }}%</h4>
+      </div>
+      <div class="right">
+        <div class="mini-chart">
+          <yur-bar-chart [hideXAxisTick]="true" [chartData]="chartData[item.code]"></yur-bar-chart>
+        </div>
+      </div>
+    </div>
+  </yur-stock-card>
+</div>

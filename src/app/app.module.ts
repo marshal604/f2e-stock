@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
-import { MyLifeModule } from './my-life/my-life.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from '@core/core.module';
 
@@ -16,7 +15,6 @@ import { CoreModule } from '@core/core.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    MyLifeModule,
     CoreModule,
     HttpClientModule
   ],
