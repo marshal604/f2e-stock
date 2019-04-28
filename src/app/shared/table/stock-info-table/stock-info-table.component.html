@@ -1,0 +1,25 @@
+<div class="stock-info-table-container" [style.height]="height" [style.width]="width">
+  <mat-table
+    [dataSource]="stockInfoDataSource"
+    matSort
+    matSortActive="date"
+    matSortDirection="desc"
+    matSortStart="asc"
+  >
+    <ng-container *ngIf="stockInfoDataSource">
+      <ng-container
+        [matColumnDef]="header"
+        *ngFor="let header of stockInfoHeader"
+        [sticky]="header === 'date'"
+      >
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >{{ mappingStockInfoHeader(header) }}
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element[header] }} </mat-cell>
+      </ng-container>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="stockInfoHeader; sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: stockInfoHeader"></mat-row>
+  </mat-table>
+</div>

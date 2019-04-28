@@ -1,5 +1,5 @@
 <div class="detail">
-  <h5 class="title">股票: {{ title ? title : '' }} {{ code }}</h5>
+  <h5 class="title">股票: {{ title || '' }} {{ code }}</h5>
   <div class="chart">
     <yur-trade-count-chart
       *ngIf="tradeCountChartData"
@@ -7,7 +7,7 @@
     ></yur-trade-count-chart>
   </div>
   <div class="stock-info-table">
-    <yur-stock-info-table [dataSource]="stockInfoDataSource"></yur-stock-info-table>
+    <yur-stock-info-table [code]="code" height="50vh"></yur-stock-info-table>
   </div>
   <div class="person-trade-table">
     <yur-person-trade-table [dataSource]="personTradeDataSource"></yur-person-trade-table>
