@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { of, Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { QueryRef } from 'apollo-angular';
-import { ApolloQueryResult } from 'apollo-client';
 
 import {
   StockOverCountItem,
@@ -11,11 +10,9 @@ import {
   StockOverCountPersonTrade,
   StockOverCountTradeCount,
   EverydayStockInfoItem,
-  EverydayStockInfo,
   EverydayStockInfoItemInput
 } from '@stock-over-count/stock-over-count.model';
-import { queryStockOverCountList } from './stock-over-count.graphql';
-import { ApolloService } from '@core/apollo/apollo.service';
+import { StockInfoService } from '@core/services/stock-info.service';
 
 @Injectable({
   providedIn: 'root'
@@ -23,29 +20,17 @@ import { ApolloService } from '@core/apollo/apollo.service';
 export class StockOverCountService {
   stockOverCountListRef: QueryRef<{ EverydayStockInfoList: EverydayStockInfoItem[] }>;
 
-  constructor(private apolloService: ApolloService) {}
-
-  getStockInfoList(req?: EverydayStockInfoItemInput): Observable<EverydayStockInfoItem[]> {
-    return this.apolloService
-      .getApollo()
-      .query<{ EverydayStockInfoList: EverydayStockInfoItem[] }>({
-        query: queryStockOverCountList,
-        variables: {
-          req
-        }
-      })
-      .pipe(map(data => data.data.EverydayStockInfoList));
-  }
+  constructor(private stockInfoService: StockInfoService) {}
 
   getStockOverCountOneDayList(): Observable<StockOverCountItem[]> {
-    return this.getStockInfoList().pipe(
+    return this.stockInfoService.getStockInfoList().pipe(
       map(data => this.filterOverCountWithPercent(data)),
       map(data => this.filterOverCountOneDay(data))
     );
   }
 
   getStockOverCountServeralDayList(): Observable<StockOverCountItem[][]> {
-    return this.getStockInfoList().pipe(
+    return this.stockInfoService.getStockInfoList().pipe(
       map(data => this.filterOverCountWithPercent(data)),
       map(data => this.filterOverCountServeralDay(data))
     );
@@ -78,7 +63,7 @@ export class StockOverCountService {
   getStockOverCountTradeCount(
     req: EverydayStockInfoItemInput
   ): Observable<StockOverCountTradeCount[]> {
-    return this.getStockInfoList(req).pipe(
+    return this.stockInfoService.getStockInfoList(req).pipe(
       map((list: EverydayStockInfoItem[]) => {
         const result = list.reverse().map(item => {
           if (!item) {
