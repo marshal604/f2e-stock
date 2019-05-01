@@ -9,11 +9,8 @@ import {
   GetStockCreditTradeListInput
 } from '@gql-models/credit-trade/credit-trade.model';
 import { StockCreditTradeTableService } from './stock-credit-trade-table.service';
-import {
-  StockCreditTradeData,
-  CrdeitTradeStatus,
-  StockCreditTradeDataItem
-} from './stock-credit-trade-table.model';
+import { StockCreditTradeData, StockCreditTradeDataItem } from './stock-credit-trade-table.model';
+import { CrdeitTradeStatus } from '@shared-models/shared-credit-trade.model';
 
 @Component({
   selector: 'yur-stock-credit-trade-table',

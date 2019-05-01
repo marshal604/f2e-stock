@@ -1,0 +1,18 @@
+@import 'variable';
+
+.table-container {
+  overflow: auto;
+}
+
+.mat-table {
+  min-height: 300px;
+  min-width: 850px;
+}
+
+.red {
+  color: $red;
+}
+
+.green {
+  color: $green;
+}

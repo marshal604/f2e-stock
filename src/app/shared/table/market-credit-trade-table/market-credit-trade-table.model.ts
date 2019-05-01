@@ -1,11 +1,11 @@
-import { StockCreditTradeItem } from '@gql-models/credit-trade/credit-trade.model';
+import { MarketCreditTradeList } from '@gql-models/credit-trade/credit-trade.model';
 import { CrdeitTradeStatus } from '@shared-models/shared-credit-trade.model';
 
-export interface StockCreditTradeData {
-  date: string;
-  list: StockCreditTradeDataItem[];
+export interface MarketCreditTradeData extends MarketCreditTradeList {
+  calcData: MarketCreditTradeCalcData;
 }
-export interface StockCreditTradeDataItem extends StockCreditTradeItem {
+
+export interface MarketCreditTradeCalcData {
   compareYesterdayFinancingCount: number;
   compareYesterdaySellingCount: number;
   financingStatus: CrdeitTradeStatus;
