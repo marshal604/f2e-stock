@@ -11,8 +11,8 @@ import {
 import { map } from 'rxjs/operators';
 
 const QUERY_EVERYDAY_STOCK_INFO_LIST = gql`
-  query EverydayStockInfoList($req: EverydayStockInfoItemInput) {
-    EverydayStockInfoList(req: $req) {
+  query($req: EverydayStockInfoItemInput) {
+    everydayStockInfoList(req: $req) {
       date
       stockInfo {
         code
@@ -50,7 +50,7 @@ export class StockInfoService {
   getStockName(req: EverydayStockInfoItemInput): Observable<EverydayStockInfo> {
     return this.apolloService
       .getApollo()
-      .query<{ EverydayStockInfoList: EverydayStockInfoItem[] }>({
+      .query<{ everydayStockInfoList: EverydayStockInfoItem[] }>({
         query: QUERY_EVERYDAY_STOCK_NAME,
         variables: {
           req
@@ -59,7 +59,7 @@ export class StockInfoService {
       .pipe(
         map(({ data }) => {
           try {
-            return data.EverydayStockInfoList[0].stockInfo[0];
+            return data.everydayStockInfoList[0].stockInfo[0];
           } catch (err) {
             return null;
           }
@@ -70,12 +70,12 @@ export class StockInfoService {
   getStockInfoList(req?: EverydayStockInfoItemInput): Observable<EverydayStockInfoItem[]> {
     return this.apolloService
       .getApollo()
-      .query<{ EverydayStockInfoList: EverydayStockInfoItem[] }>({
+      .query<{ everydayStockInfoList: EverydayStockInfoItem[] }>({
         query: QUERY_EVERYDAY_STOCK_INFO_LIST,
         variables: {
           req
         }
       })
-      .pipe(map(({ data }) => data.EverydayStockInfoList));
+      .pipe(map(({ data }) => data.everydayStockInfoList));
   }
 }
