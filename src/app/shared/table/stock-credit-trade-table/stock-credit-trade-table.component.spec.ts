@@ -3,20 +3,20 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { PersonTradeTableComponent } from './person-trade-table.component';
+import { StockCreditTradeTableComponent } from './stock-credit-trade-table.component';
 
-describe('PersonTradeTableComponent', () => {
-  let component: PersonTradeTableComponent;
-  let fixture: ComponentFixture<PersonTradeTableComponent>;
+describe('StockCreditTradeTableComponent', () => {
+  let component: StockCreditTradeTableComponent;
+  let fixture: ComponentFixture<StockCreditTradeTableComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PersonTradeTableComponent]
+      declarations: [StockCreditTradeTableComponent]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PersonTradeTableComponent);
+    fixture = TestBed.createComponent(StockCreditTradeTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

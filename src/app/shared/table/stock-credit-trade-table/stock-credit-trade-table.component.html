@@ -1,0 +1,42 @@
+<div
+  [attr.name]="'stock-credit-trade-table-container'"
+  class="table-container"
+  [style.height]="height"
+  [style.width]="width"
+>
+  <mat-table
+    [dataSource]="dataSource"
+    matSort
+    matSortActive="date"
+    matSortDirection="desc"
+    matSortStart="asc"
+  >
+    <ng-container
+      [matColumnDef]="header"
+      *ngFor="let header of headers"
+      [sticky]="header === 'date'"
+    >
+      <ng-container *ngIf="header !== 'date'; else dateHeader">
+        <mat-header-cell *matHeaderCellDef>{{ mappingHeader(header) }} </mat-header-cell>
+      </ng-container>
+      <ng-template #dateHeader>
+        <ng-container>
+          <mat-header-cell *matHeaderCellDef mat-sort-header
+            >{{ mappingHeader(header) }}
+          </mat-header-cell>
+        </ng-container>
+      </ng-template>
+      <mat-cell
+        *matCellDef="let element"
+        [class.red]="isRedStyle(element, header)"
+        [class.green]="isGreenStyle(element, header)"
+        [title]="getTitle(element, header)"
+      >
+        {{ parseContentWithHeader(element, header) }}
+      </mat-cell>
+    </ng-container>
+
+    <mat-row *matRowDef="let row; columns: headers"></mat-row>
+    <mat-header-row *matHeaderRowDef="headers; sticky: true"></mat-header-row>
+  </mat-table>
+</div>
