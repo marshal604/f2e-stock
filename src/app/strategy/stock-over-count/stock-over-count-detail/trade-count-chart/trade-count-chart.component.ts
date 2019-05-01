@@ -28,10 +28,13 @@ export class TradeCountChartComponent implements OnInit, AfterViewInit, OnDestro
   yAxis: d3.ScaleLinear<number, number>;
   yAxisGroup: d3.Selection<SVGGElement, {}, HTMLElement, any>;
   g: d3.Selection<SVGGElement, {}, HTMLElement, any>;
+  g2: d3.Selection<SVGGElement, {}, HTMLElement, any>;
   gw: number;
   gh: number;
   threshold: number;
   thresholdGroup: d3.Selection<SVGGElement, {}, HTMLElement, any>;
+  thresholdLabelGroup: d3.Selection<SVGGElement, {}, HTMLElement, any>;
+  thresholdRectGroup: d3.Selection<SVGGElement, {}, HTMLElement, any>;
   constructor(private zone: NgZone) {}
 
   ngOnInit() {}
@@ -63,6 +66,11 @@ export class TradeCountChartComponent implements OnInit, AfterViewInit, OnDestro
       .attr('width', this.gw)
       .attr('height', this.gh)
       .attr('transform', `translate(${margin * 2}, ${margin})`);
+    this.g2 = svg
+      .append('g')
+      .attr('width', this.gw)
+      .attr('height', this.gh)
+      .attr('transform', `translate(${margin * 2}, ${margin})`);
 
     this.xAxis = d3
       .scaleBand()
@@ -74,7 +82,9 @@ export class TradeCountChartComponent implements OnInit, AfterViewInit, OnDestro
     this.yAxis = d3.scaleLinear().range([this.gh, 0]);
     this.yAxisGroup = this.g.append('g');
 
-    this.thresholdGroup = this.g.append('g');
+    this.thresholdGroup = this.g2.append('g');
+    this.thresholdLabelGroup = this.thresholdGroup.append('g');
+    this.thresholdRectGroup = this.thresholdGroup.append('g');
   }
 
   private updateChart() {
@@ -114,7 +124,32 @@ export class TradeCountChartComponent implements OnInit, AfterViewInit, OnDestro
     this.yAxisGroup.call(yAxis);
 
     // draw threshold
-    const thresholdLabel = this.thresholdGroup
+    const thresholdLabelBgRect = this.thresholdLabelGroup
+      .selectAll('rect')
+      .data([{ threshold: this.threshold }]) as d3.Selection<
+      SVGRectElement,
+      { threshold: number },
+      SVGGElement,
+      {}
+    >;
+
+    thresholdLabelBgRect.exit().remove();
+    thresholdLabelBgRect
+      .enter()
+      .append('rect')
+      .merge(thresholdLabelBgRect)
+      .attr('x', () => 8)
+      .attr('y', d => this.yAxis(d.threshold) - 15)
+      .attr('height', () => 12)
+      .attr('width', () => 0)
+      .attr('fill', '#333333')
+      .transition()
+      .delay(1000)
+      .attr('width', d =>
+        d.threshold.toString().length * 6 < 15 ? 15 : d.threshold.toString().length * 6
+      );
+
+    const thresholdLabel = this.thresholdLabelGroup
       .selectAll('text')
       .data([{ threshold: this.threshold }]) as d3.Selection<
       SVGTextElement,
@@ -128,15 +163,15 @@ export class TradeCountChartComponent implements OnInit, AfterViewInit, OnDestro
       .enter()
       .append('text')
       .merge(thresholdLabel)
-      .attr('x', () => 5)
+      .attr('x', () => 10)
       .attr('y', d => this.yAxis(d.threshold) - 5)
       .attr('font-size', d => '0.625rem')
-      .attr('fill', '#17a2b8')
+      .attr('fill', '#ffffff')
       .transition()
       .delay(1000)
       .text(d => d.threshold);
 
-    const threshold = this.thresholdGroup
+    const threshold = this.thresholdRectGroup
       .selectAll('rect')
       .data([{ threshold: this.threshold }]) as d3.Selection<
       SVGRectElement,
@@ -145,7 +180,6 @@ export class TradeCountChartComponent implements OnInit, AfterViewInit, OnDestro
       {}
     >;
     threshold.exit().remove();
-
     threshold
       .enter()
       .append('rect')
