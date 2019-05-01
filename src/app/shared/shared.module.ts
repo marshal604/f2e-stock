@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { MaterialModule } from './material.module';
 import { TopBarComponent } from '@shared-layout/top-bar/top-bar.component';
@@ -9,7 +10,7 @@ import { DialogComponent } from '@shared-container/dialog/dialog.component';
 import { BarChartComponent } from '@shared-chart/bar-chart/bar-chart.component';
 import { StockCardComponent } from '@shared-container/stock-card/stock-card.component';
 import { StockInfoTableComponent } from '@shared-table/stock-info-table/stock-info-table.component';
-import { FormsModule } from '@angular/forms';
+import { StockCreditTradeTableComponent } from '@shared-table/stock-credit-trade-table/stock-credit-trade-table.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     DialogComponent,
     BarChartComponent,
     StockCardComponent,
-    StockInfoTableComponent
+    StockInfoTableComponent,
+    StockCreditTradeTableComponent
   ],
   imports: [CommonModule, MaterialModule, RouterModule, FormsModule],
   exports: [
@@ -29,7 +31,8 @@ import { FormsModule } from '@angular/forms';
     DialogComponent,
     BarChartComponent,
     StockCardComponent,
-    StockInfoTableComponent
+    StockInfoTableComponent,
+    StockCreditTradeTableComponent
   ]
 })
 export class SharedModule {}
