@@ -1,4 +1,5 @@
 import { StockCreditTradeItem } from '@gql-models/credit-trade/credit-trade.model';
+import { CrdeitTradeStatus } from '@shared-models/shared-credit-trade.model';
 
 export interface StockCreditTradeData {
   date: string;
@@ -11,10 +12,4 @@ export interface StockCreditTradeDataItem extends StockCreditTradeItem {
   financingStatusContinueCount: number;
   sellingStatus: CrdeitTradeStatus;
   sellingStatusContinueCount: number;
-}
-
-export enum CrdeitTradeStatus {
-  Increase = 1,
-  Decrease,
-  Zero
 }
