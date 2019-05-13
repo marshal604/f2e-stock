@@ -12,6 +12,8 @@ import { StockCardComponent } from '@shared-container/stock-card/stock-card.comp
 import { StockInfoTableComponent } from '@shared-table/stock-info-table/stock-info-table.component';
 import { StockCreditTradeTableComponent } from '@shared-table/stock-credit-trade-table/stock-credit-trade-table.component';
 import { MarketCreditTradeTableComponent } from '@shared-table/market-credit-trade-table/market-credit-trade-table.component';
+import { InvestorIntegrateTableComponent } from '@shared-table/investor-integrate-table/investor-integrate-table.component';
+import { StockUnitPipe } from '@shared-pipe/unit.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { MarketCreditTradeTableComponent } from '@shared-table/market-credit-tra
     StockCardComponent,
     StockInfoTableComponent,
     StockCreditTradeTableComponent,
-    MarketCreditTradeTableComponent
+    MarketCreditTradeTableComponent,
+    InvestorIntegrateTableComponent,
+    StockUnitPipe
   ],
   imports: [CommonModule, MaterialModule, RouterModule, FormsModule],
   exports: [
@@ -35,7 +39,9 @@ import { MarketCreditTradeTableComponent } from '@shared-table/market-credit-tra
     StockCardComponent,
     StockInfoTableComponent,
     StockCreditTradeTableComponent,
-    MarketCreditTradeTableComponent
+    MarketCreditTradeTableComponent,
+    InvestorIntegrateTableComponent,
+    StockUnitPipe
   ]
 })
 export class SharedModule {}

@@ -17,6 +17,7 @@
       "@shared-container/*": ["./src/app/shared/container/*"],
       "@shared-table/*": ["./src/app/shared/table/*"],
       "@shared-models/*": ["./src/app/shared/models/*"],
+      "@shared-pipe/*": ["./src/app/shared/pipe/*"],
       "@stock-over-count/*": ["./src/app/strategy/stock-over-count/*"],
       "@core/*": ["./src/app/core/*"],
       "@dashboard/*": ["./src/app/dashboard/*"],

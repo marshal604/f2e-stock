@@ -13,7 +13,7 @@ import {
   MarketCreditTradeData,
   MarketCreditTradeCalcData
 } from './market-credit-trade-table.model';
-import { CrdeitTradeStatus } from '@shared-models/shared-credit-trade.model';
+import { TradeStatus } from '@shared/models/shared-trade.model';
 
 @Component({
   selector: 'yur-market-credit-trade-table',
@@ -74,9 +74,9 @@ export class MarketCreditTradeTableComponent implements OnInit, OnDestroy {
         return element.selling.todayBalance;
       case 'financingStatus':
         mapping = {
-          [CrdeitTradeStatus.Increase]: '資增',
-          [CrdeitTradeStatus.Decrease]: '資減',
-          [CrdeitTradeStatus.Zero]: '-'
+          [TradeStatus.Increase]: '資增',
+          [TradeStatus.Decrease]: '資減',
+          [TradeStatus.Zero]: '-'
         };
         return mapping[element.calcData[header]] === '-'
           ? '-'
@@ -85,9 +85,9 @@ export class MarketCreditTradeTableComponent implements OnInit, OnDestroy {
             }天`;
       case 'sellingStatus':
         mapping = {
-          [CrdeitTradeStatus.Increase]: '券增',
-          [CrdeitTradeStatus.Decrease]: '券減',
-          [CrdeitTradeStatus.Zero]: '-'
+          [TradeStatus.Increase]: '券增',
+          [TradeStatus.Decrease]: '券減',
+          [TradeStatus.Zero]: '-'
         };
         return mapping[element.calcData[header]] === '-'
           ? '-'
@@ -101,14 +101,14 @@ export class MarketCreditTradeTableComponent implements OnInit, OnDestroy {
     if (!header.includes('Status')) {
       return false;
     }
-    return element.calcData[header] === CrdeitTradeStatus.Increase;
+    return element.calcData[header] === TradeStatus.Increase;
   }
 
   isGreenStyle(element: MarketCreditTradeData, header: string): boolean {
     if (!header.includes('Status')) {
       return false;
     }
-    return element.calcData[header] === CrdeitTradeStatus.Decrease;
+    return element.calcData[header] === TradeStatus.Decrease;
   }
 
   private initDataSource() {
@@ -127,23 +127,23 @@ export class MarketCreditTradeTableComponent implements OnInit, OnDestroy {
   private calcMarketCreditTradeList(data: MarketCreditTradeList[]): MarketCreditTradeData[] {
     let financingStatusContinueCount: number;
     let sellingStatusContinueCount: number;
-    let financingStatus: CrdeitTradeStatus;
-    let sellingStatus: CrdeitTradeStatus;
+    let financingStatus: TradeStatus;
+    let sellingStatus: TradeStatus;
     return data.map(item => {
       const financingCount = +item.financing.todayBalance - +item.financing.yesterdayBalance;
       const sellingCount = +item.selling.todayBalance - +item.selling.yesterdayBalance;
       const newFinancingStatus =
         financingCount === 0
-          ? CrdeitTradeStatus.Zero
+          ? TradeStatus.Zero
           : financingCount >= 0
-          ? CrdeitTradeStatus.Increase
-          : CrdeitTradeStatus.Decrease;
+          ? TradeStatus.Increase
+          : TradeStatus.Decrease;
       const newSellingStatus =
         sellingCount === 0
-          ? CrdeitTradeStatus.Zero
+          ? TradeStatus.Zero
           : sellingCount >= 0
-          ? CrdeitTradeStatus.Increase
-          : CrdeitTradeStatus.Decrease;
+          ? TradeStatus.Increase
+          : TradeStatus.Decrease;
       financingStatusContinueCount =
         newFinancingStatus === financingStatus ? financingStatusContinueCount + 1 : 1;
       sellingStatusContinueCount =

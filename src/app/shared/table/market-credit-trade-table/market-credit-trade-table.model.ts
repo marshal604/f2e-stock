@@ -1,5 +1,5 @@
 import { MarketCreditTradeList } from '@gql-models/credit-trade/credit-trade.model';
-import { CrdeitTradeStatus } from '@shared-models/shared-credit-trade.model';
+import { TradeStatus } from '@shared/models/shared-trade.model';
 
 export interface MarketCreditTradeData extends MarketCreditTradeList {
   calcData: MarketCreditTradeCalcData;
@@ -8,8 +8,8 @@ export interface MarketCreditTradeData extends MarketCreditTradeList {
 export interface MarketCreditTradeCalcData {
   compareYesterdayFinancingCount: number;
   compareYesterdaySellingCount: number;
-  financingStatus: CrdeitTradeStatus;
+  financingStatus: TradeStatus;
   financingStatusContinueCount: number;
-  sellingStatus: CrdeitTradeStatus;
+  sellingStatus: TradeStatus;
   sellingStatusContinueCount: number;
 }
