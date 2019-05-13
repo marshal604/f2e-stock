@@ -31,8 +31,8 @@ const QUERY_EVERYDAY_STOCK_INFO_LIST = gql`
 `;
 
 const QUERY_EVERYDAY_STOCK_NAME = gql`
-  query EverydayStockInfoList($req: EverydayStockInfoItemInput) {
-    EverydayStockInfoList(req: $req) {
+  query($req: EverydayStockInfoItemInput) {
+    everydayStockInfoList(req: $req) {
       stockInfo {
         code
         name
