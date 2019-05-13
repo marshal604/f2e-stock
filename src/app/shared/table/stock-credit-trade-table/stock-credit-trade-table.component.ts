@@ -10,7 +10,7 @@ import {
 } from '@gql-models/credit-trade/credit-trade.model';
 import { StockCreditTradeTableService } from './stock-credit-trade-table.service';
 import { StockCreditTradeData, StockCreditTradeDataItem } from './stock-credit-trade-table.model';
-import { CrdeitTradeStatus } from '@shared-models/shared-credit-trade.model';
+import { TradeStatus } from '@shared/models/shared-trade.model';
 
 @Component({
   selector: 'yur-stock-credit-trade-table',
@@ -99,9 +99,9 @@ export class StockCreditTradeTableComponent implements OnInit, OnDestroy {
         return element[header];
       case 'financingStatus':
         mapping = {
-          [CrdeitTradeStatus.Increase]: '資增',
-          [CrdeitTradeStatus.Decrease]: '資減',
-          [CrdeitTradeStatus.Zero]: '-'
+          [TradeStatus.Increase]: '資增',
+          [TradeStatus.Decrease]: '資減',
+          [TradeStatus.Zero]: '-'
         };
         return mapping[element.list[0][header]] === '-'
           ? '-'
@@ -110,9 +110,9 @@ export class StockCreditTradeTableComponent implements OnInit, OnDestroy {
             }天`;
       case 'sellingStatus':
         mapping = {
-          [CrdeitTradeStatus.Increase]: '券增',
-          [CrdeitTradeStatus.Decrease]: '券減',
-          [CrdeitTradeStatus.Zero]: '-'
+          [TradeStatus.Increase]: '券增',
+          [TradeStatus.Decrease]: '券減',
+          [TradeStatus.Zero]: '-'
         };
         return mapping[element.list[0][header]] === '-'
           ? '-'
@@ -128,14 +128,14 @@ export class StockCreditTradeTableComponent implements OnInit, OnDestroy {
     if (!header.includes('Status') || element.list.length === 0) {
       return false;
     }
-    return element.list[0][header] === CrdeitTradeStatus.Increase;
+    return element.list[0][header] === TradeStatus.Increase;
   }
 
   isGreenStyle(element: StockCreditTradeData, header: string): boolean {
     if (!header.includes('Status') || element.list.length === 0) {
       return false;
     }
-    return element.list[0][header] === CrdeitTradeStatus.Decrease;
+    return element.list[0][header] === TradeStatus.Decrease;
   }
 
   getTitle(element: StockCreditTradeData, header: string): string {
@@ -160,8 +160,8 @@ export class StockCreditTradeTableComponent implements OnInit, OnDestroy {
   private calcStockCreditTradeList(data: StockCreditTradeList[]): StockCreditTradeData[] {
     let financingStatusContinueCount: number;
     let sellingStatusContinueCount: number;
-    let financingStatus: CrdeitTradeStatus;
-    let sellingStatus: CrdeitTradeStatus;
+    let financingStatus: TradeStatus;
+    let sellingStatus: TradeStatus;
     return data.map(item => ({
       date: item.date,
       list: item.list.map(stock => {
@@ -169,16 +169,16 @@ export class StockCreditTradeTableComponent implements OnInit, OnDestroy {
         const sellingCount = +stock.sellingTodayBalance - +stock.sellingYesterdayBalance;
         const newFinancingStatus =
           financingCount === 0
-            ? CrdeitTradeStatus.Zero
+            ? TradeStatus.Zero
             : financingCount >= 0
-            ? CrdeitTradeStatus.Increase
-            : CrdeitTradeStatus.Decrease;
+            ? TradeStatus.Increase
+            : TradeStatus.Decrease;
         const newSellingStatus =
           sellingCount === 0
-            ? CrdeitTradeStatus.Zero
+            ? TradeStatus.Zero
             : sellingCount >= 0
-            ? CrdeitTradeStatus.Increase
-            : CrdeitTradeStatus.Decrease;
+            ? TradeStatus.Increase
+            : TradeStatus.Decrease;
         financingStatusContinueCount =
           newFinancingStatus === financingStatus ? financingStatusContinueCount + 1 : 1;
         sellingStatusContinueCount =

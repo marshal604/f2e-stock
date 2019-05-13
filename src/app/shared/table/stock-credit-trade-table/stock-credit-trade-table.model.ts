@@ -1,5 +1,5 @@
 import { StockCreditTradeItem } from '@gql-models/credit-trade/credit-trade.model';
-import { CrdeitTradeStatus } from '@shared-models/shared-credit-trade.model';
+import { TradeStatus } from '@shared/models/shared-trade.model';
 
 export interface StockCreditTradeData {
   date: string;
@@ -8,8 +8,8 @@ export interface StockCreditTradeData {
 export interface StockCreditTradeDataItem extends StockCreditTradeItem {
   compareYesterdayFinancingCount: number;
   compareYesterdaySellingCount: number;
-  financingStatus: CrdeitTradeStatus;
+  financingStatus: TradeStatus;
   financingStatusContinueCount: number;
-  sellingStatus: CrdeitTradeStatus;
+  sellingStatus: TradeStatus;
   sellingStatusContinueCount: number;
 }
