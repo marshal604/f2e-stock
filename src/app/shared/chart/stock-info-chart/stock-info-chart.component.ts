@@ -25,9 +25,9 @@ export class StockInfoChartComponent implements AfterViewInit, OnDestroy {
   @Input() code: string;
   @ViewChild('chartContainer')
   chartContainer: ElementRef<HTMLElement>;
+  chartId = `chart-${new Date().getTime()}`;
 
   private chartData: StockOverCountTradeCount[];
-  private chartId = `chart-${new Date().getTime()}`;
   private xAxis: d3.ScaleBand<string>;
   private xAxisGroup: d3.Selection<SVGGElement, {}, HTMLElement, any>;
   private yAxis: d3.ScaleLinear<number, number>;
