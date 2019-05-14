@@ -7,6 +7,7 @@ import { MaterialModule } from './material.module';
 import { TopBarComponent } from '@shared-layout/top-bar/top-bar.component';
 import { SayHiComponent } from '@shared-animation/say-hi/say-hi.component';
 import { BarChartComponent } from '@shared-chart/bar-chart/bar-chart.component';
+import { StockInfoChartComponent } from '@shared-chart/stock-info-chart/stock-info-chart.component';
 import { DialogComponent } from '@shared-container/dialog/dialog.component';
 import { StockCardComponent } from '@shared-container/stock-card/stock-card.component';
 import { DetailComponent } from '@shared-container/detail/detail.component';
@@ -28,6 +29,7 @@ import { StockUnitPipe } from '@shared-pipe/unit.pipe';
     MarketCreditTradeTableComponent,
     InvestorIntegrateTableComponent,
     StockUnitPipe,
+    StockInfoChartComponent,
     DetailComponent
   ],
   imports: [CommonModule, MaterialModule, RouterModule, FormsModule],
@@ -44,6 +46,7 @@ import { StockUnitPipe } from '@shared-pipe/unit.pipe';
     MarketCreditTradeTableComponent,
     InvestorIntegrateTableComponent,
     StockUnitPipe,
+    StockInfoChartComponent,
     DetailComponent
   ]
 })
