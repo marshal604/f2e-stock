@@ -31,7 +31,14 @@
         [class.red]="isRedStyle(element, header)"
         [class.green]="isGreenStyle(element, header)"
       >
-        {{ parseContentWithHeader(element, header) }}
+        <ng-container *ngIf="header === 'code'; else otherCell">
+          <span yurStockRouter [codeRouter]="element?.code">
+            {{ parseContentWithHeader(element, header) }}
+          </span>
+        </ng-container>
+        <ng-template #otherCell>
+          {{ parseContentWithHeader(element, header) }}
+        </ng-template>
       </mat-cell>
     </ng-container>
 

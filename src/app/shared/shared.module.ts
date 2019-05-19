@@ -16,6 +16,7 @@ import { StockCreditTradeTableComponent } from '@shared-table/stock-credit-trade
 import { MarketCreditTradeTableComponent } from '@shared-table/market-credit-trade-table/market-credit-trade-table.component';
 import { InvestorIntegrateTableComponent } from '@shared-table/investor-integrate-table/investor-integrate-table.component';
 import { StockUnitPipe } from '@shared-pipe/unit.pipe';
+import { StockRouterDirective } from '@shared-directive/stock-router.directive';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { StockUnitPipe } from '@shared-pipe/unit.pipe';
     InvestorIntegrateTableComponent,
     StockUnitPipe,
     StockInfoChartComponent,
-    DetailComponent
+    DetailComponent,
+    StockRouterDirective
   ],
   imports: [CommonModule, MaterialModule, RouterModule, FormsModule],
   exports: [
@@ -47,7 +49,8 @@ import { StockUnitPipe } from '@shared-pipe/unit.pipe';
     InvestorIntegrateTableComponent,
     StockUnitPipe,
     StockInfoChartComponent,
-    DetailComponent
+    DetailComponent,
+    StockRouterDirective
   ]
 })
 export class SharedModule {}
