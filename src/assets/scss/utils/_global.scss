@@ -26,3 +26,7 @@ g[name='hide-x-axis-tick'] {
 .green {
   color: $green !important;
 }
+
+.underline-hover {
+  @include underline-hover;
+}

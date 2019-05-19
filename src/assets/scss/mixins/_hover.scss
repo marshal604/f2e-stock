@@ -1,0 +1,22 @@
+@mixin underline-hover($underLineColor: #fd7e14, $position: relative) {
+  position: $position;
+  cursor: pointer;
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: $underLineColor;
+    transition: 0.3s;
+  }
+
+  &:hover {
+    &:after {
+      left: 0;
+      width: 100%;
+    }
+  }
+}
